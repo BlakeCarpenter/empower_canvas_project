@@ -1,8 +1,17 @@
 import express, { Request } from "express";
+import cors from 'cors';
+
 import AppDAO from "./daos/AppDAO";
 import CanvasResult from "./models/CanvasResult";
 const PORT = 8080;
 const app = express();
+
+const allowedOrigins = ['http://localhost:3000']
+const corsOptions:cors.CorsOptions = {
+    origin: allowedOrigins
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const appDAO:AppDAO = new AppDAO("./sqlite_datafile/empower_db.db");
@@ -23,7 +32,9 @@ app.post("/api/canvas-result", (req:Request<CanvasResult>, res) => {
 app.get("/api/canvas-result", (req:Request<CanvasResult>, res) => {
     appDAO.all(`SELECT * FROM canvas_result`)
         .then(result => {
-            res.status(200).send(result);
+            res.status(200).send(result.map((v:any) => ({
+                firstName: v.first_name, lastName: v.last_name, canvasNotes: v.canvas_notes
+            })));
         })
         .catch(error => {
             res.status(500).send("Could not create note");
