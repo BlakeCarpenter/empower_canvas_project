@@ -26,7 +26,6 @@ var AppDAO = /** @class */ (function () {
                     reject(err);
                 }
                 else {
-                    console.log('result', result);
                     resolve(result);
                 }
             });
@@ -43,7 +42,6 @@ var AppDAO = /** @class */ (function () {
                     reject(err);
                 }
                 else {
-                    console.log('result', result);
                     resolve(result);
                 }
             });
@@ -60,7 +58,6 @@ var AppDAO = /** @class */ (function () {
                     reject(err);
                 }
                 else {
-                    console.log('result', result);
                     resolve(result);
                 }
             });

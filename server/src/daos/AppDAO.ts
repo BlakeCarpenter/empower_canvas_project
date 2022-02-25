@@ -21,7 +21,6 @@ export default class AppDAO{
                     console.log(err);
                     reject(err);
                   } else {
-                    console.log('result', result);
                     resolve(result);
                   }
             })
@@ -36,7 +35,6 @@ export default class AppDAO{
                     console.log(err);
                     reject(err);
                   } else {
-                    console.log('result', result);
                     resolve(result);
                   }
             })
@@ -51,7 +49,6 @@ export default class AppDAO{
                     console.log(err);
                     reject(err);
                   } else {
-                    console.log('result', result);
                     resolve(result);
                   }
             })
