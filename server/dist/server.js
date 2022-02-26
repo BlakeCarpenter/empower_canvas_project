@@ -31,7 +31,7 @@ app.get("/api/canvas-result", function (req, res) {
     appDAO.all("SELECT * FROM canvas_result")
         .then(function (result) {
         res.status(200).send(result.map(function (v) { return ({
-            firstName: v.first_name, lastName: v.last_name, canvasNotes: v.canvas_notes
+            id: v.id, firstName: v.first_name, lastName: v.last_name, canvasNotes: v.canvas_notes
         }); }));
     })
         .catch(function (error) {

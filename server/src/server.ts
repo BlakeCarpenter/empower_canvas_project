@@ -33,7 +33,7 @@ app.get("/api/canvas-result", (req:Request<CanvasResult>, res) => {
     appDAO.all(`SELECT * FROM canvas_result`)
         .then(result => {
             res.status(200).send(result.map((v:any) => ({
-                firstName: v.first_name, lastName: v.last_name, canvasNotes: v.canvas_notes
+                id:v.id, firstName: v.first_name, lastName: v.last_name, canvasNotes: v.canvas_notes
             })));
         })
         .catch(error => {
