@@ -19,7 +19,7 @@ const appDAO:AppDAO = new AppDAO("./sqlite_datafile/empower_db.db");
 // Canvas Results
 app.post("/api/canvas-result", (req:Request<CanvasResult>, res) => {
     const note:CanvasResult = req.body;
-    appDAO.run(`INSERT INTO canvas_result (first_name, last_name, canvas_notes) VALUES ("${note.firstName}", "${note.lastName}", "${note.canvasNotes}")`)
+    appDAO.run(`INSERT INTO canvas_result (first_name, last_name, canvas_notes) VALUES (?, ?, ?)`, [note.firstName, note.lastName, note.canvasNotes])
         .then(result => {
             console.log(result);
             res.status(201).send("Successfully created note");
