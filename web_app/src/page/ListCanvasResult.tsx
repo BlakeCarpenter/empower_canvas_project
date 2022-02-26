@@ -20,7 +20,7 @@ export default function ListCanvasResult(){
         <Table>
             <thead></thead>
             <tbody>
-                {resultList.map(v => <tr key={`${v.lastName}_${v.firstName}`}>
+                {resultList.map(v => <tr key={`${v.id}_${v.lastName}_${v.firstName}`}>
                     <td>{v.lastName}</td><td>{v.firstName}</td><td>{v.canvasNotes}</td>
                 </tr>)}
             </tbody>
