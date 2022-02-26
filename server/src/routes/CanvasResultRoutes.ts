@@ -4,6 +4,6 @@ import CanvasResultController from '../controllers/CanvasResultController';
 const router:Router = Router();
 const controller:CanvasResultController = new CanvasResultController();
 
-router.get("/:id", controller.getCanvasResult);
+router.get("/:id", controller.getCanvasResult.bind(controller));
 
 export default router;
