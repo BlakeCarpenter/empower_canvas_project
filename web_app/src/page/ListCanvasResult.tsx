@@ -10,7 +10,7 @@ export default function ListCanvasResult(){
 
     React.useEffect(() => {
         axios.get("http://localhost:8080/api/canvas-result")
-            .then(response => setResultList(response.data))
+            .then(response => setResultList(response.data.data))
             .catch()
             .finally();
     }, []);

@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 import Navigation from './navigation/Navigation';
 import ListCanvasResult from './page/ListCanvasResult';
-import AddCanvasResult from './page/AddCanvasResult';
+import AddCanvasResult from './page/CanvasResultView/AddCanvasResult';
 import PageWrap from './page/PageWrap';
 
 function App() {
