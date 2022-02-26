@@ -12,9 +12,9 @@ const corsOptions:cors.CorsOptions = {
     origin: allowedOrigins
 };
 
-app.use("/api", routes);
 app.use(cors(corsOptions));
 app.use(express.json());
+app.use("/api", routes);
 
 // const dao:sqlLiteDAO = new sqlLiteDAO("./sqlite_datafile/empower_db.db");
 
