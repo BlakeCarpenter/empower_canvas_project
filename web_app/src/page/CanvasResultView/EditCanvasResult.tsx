@@ -1,9 +1,8 @@
 import React from 'react';
-import {useParams, useNavigate} from 'react-router-dom';
+import {Link, useParams, useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
 import CanvasResult from '../../models/CanvasResult';
-import Button from 'react-bootstrap/Button';
 import CanvasResultForm from './CanvasResultForm';
 
 interface EditCanvasResultProps {
@@ -16,6 +15,7 @@ export default function EditCanvasResult(props:EditCanvasResultProps){
     const [firstName, setFirstName] = React.useState<string>("");
     const [lastName, setLastName] = React.useState<string>("");
     const [canvasNotes, setCanvasNotes] = React.useState<string>("");
+    const [retrievalError, setRetrievalError] = React.useState<boolean>(false);
 
     const submit = () => {
         let editedCanvas = {id, firstName, lastName, canvasNotes} as CanvasResult;
@@ -35,19 +35,28 @@ export default function EditCanvasResult(props:EditCanvasResultProps){
                 setLastName(data.lastName);
                 setCanvasNotes(data.canvasNotes);
             })
-            .catch();
-    }, []);
+            .catch(err => {
+                setRetrievalError(true);
+            });
+    }, [id, navigate]);
     
-    return <>
-        <h5>Edit Canvas Result</h5>
+    return !retrievalError ? <>
+        <h4>Edit Canvas Result</h4>
         <CanvasResultForm
-             firstName={firstName}
-             lastName={lastName}
-             canvasNotes={canvasNotes}
-             setFirstName={setFirstName}
-             setLastName={setLastName}
-             setCanvasNotes={setCanvasNotes}
+            firstName={firstName}
+            lastName={lastName}
+            canvasNotes={canvasNotes}
+            setFirstName={setFirstName}
+            setLastName={setLastName}
+            setCanvasNotes={setCanvasNotes}
+            sendAction={submit}
+            cancelAction={() => navigate("/canvas-results")}
+            sendButtonLabel="Save"
         />
-        <Button onClick={submit}>Submit</Button>
-    </>
+    </> : <div>
+        <h4>Could not retrieve Cavnasing Note</h4>
+        <p>
+            <Link to="/canvas-results">Return to Canvasing Notes</Link>
+        </p>
+    </div>
 }

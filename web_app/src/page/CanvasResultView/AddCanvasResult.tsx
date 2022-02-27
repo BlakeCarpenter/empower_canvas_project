@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
+import {useNavigate} from 'react-router-dom';
 
 import CanvasResult from '../../models/CanvasResult';
-import Button from 'react-bootstrap/Button';
 import CanvasResultForm from './CanvasResultForm';
 
 export default function AddCanvasResult(){
+    const navigate = useNavigate();
     const [firstName, setFirstName] = React.useState<string>("");
     const [lastName, setLastName] = React.useState<string>("");
     const [canvasNotes, setCanvasNotes] = React.useState<string>("");
@@ -18,13 +19,13 @@ export default function AddCanvasResult(){
 
         axios.post("http://localhost:8080/api/canvas-result", newCanvas)
             .then(response => {
-                console.log(response.data);
+                navigate(-1);
             })
             .catch();
     }
     
     return <>
-        <h5>Add Canvas Result</h5>
+        <h4>Add Canvas Result</h4>
         <CanvasResultForm
              firstName={firstName}
              lastName={lastName}
@@ -32,7 +33,9 @@ export default function AddCanvasResult(){
              setFirstName={setFirstName}
              setLastName={setLastName}
              setCanvasNotes={setCanvasNotes}
+             sendAction={submit}
+             cancelAction={() => navigate(-1)}
+             sendButtonLabel="Add"
         />
-        <Button onClick={submit}>Submit</Button>
     </>
 }
