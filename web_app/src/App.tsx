@@ -3,9 +3,10 @@ import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
 import logo from './logo.svg';
 import './App.css';
 import Navigation from './navigation/Navigation';
-import ListCanvasResult from './page/ListCanvasResult';
+import ListCanvasResult from './page/ListCanvasResult/ListCanvasResult';
 import AddCanvasResult from './page/CanvasResultView/AddCanvasResult';
 import PageWrap from './page/PageWrap';
+import EditCanvasResult from './page/CanvasResultView/EditCanvasResult';
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 				<Route path="/canvas-results">
 					<Route index element={<ListCanvasResult />} />
 					<Route path="add" element={<AddCanvasResult/>}/>
+					<Route path="edit/:id" element={<EditCanvasResult/>}/>
 				</Route>
 				<Route path="*" element={<NoMatch />} />
 			</Route>
