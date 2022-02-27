@@ -4,7 +4,6 @@ export default class SQLiteDAO{
     db:Database;
 
     constructor(dbFilePath:string){
-        console.log(dbFilePath);
         this.db = new sqlite3.Database(dbFilePath, (err) => {
             if(err){
                 console.log("Error connecting to database", err);
