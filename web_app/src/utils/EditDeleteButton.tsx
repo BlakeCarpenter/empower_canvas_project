@@ -18,8 +18,8 @@ export default function EditDeleteButton(props:EditDeleteButtonProps){
     }
     
     return showMore ? <>
-        <Button variant="light" onClick={() => navigate(editLink)}><PencilFill/></Button>
-        <Button variant="light" onClick={() => deleteAction()}><TrashFill/></Button>
+        <Button variant="primary" onClick={() => navigate(editLink)}><PencilFill/></Button>
+        <Button variant="danger" onClick={() => deleteAction()}><TrashFill/></Button>
         <Button variant="light" onClick={toggle}><XLg/></Button>
     </> :
     <Button variant="light" onClick={toggle}>
