@@ -1,6 +1,6 @@
 import sqlite3, {Database, RunResult} from "sqlite3";
 
-export default class AppDAO{
+export default class SQLiteDAO{
     db:Database;
 
     constructor(dbFilePath:string){
@@ -13,7 +13,7 @@ export default class AppDAO{
         });
     }
 
-    run(sql:string, params=[]):Promise<any>{
+    run(sql:string, params:any[]=[]):Promise<any>{
         return new Promise((resolve, reject) => {
             this.db.run(sql, params, (result:RunResult, err:Error) => {
                 if (err) {
@@ -21,14 +21,13 @@ export default class AppDAO{
                     console.log(err);
                     reject(err);
                   } else {
-                    console.log('result', result);
                     resolve(result);
                   }
             })
         });
     }
 
-    get(sql:string, params=[]):Promise<any>{
+    get(sql:string, params:any[]=[]):Promise<any>{
         return new Promise((resolve, reject) => {
             this.db.get(sql, params, (err:Error, result:RunResult) => {
                 if (err) {
@@ -36,14 +35,13 @@ export default class AppDAO{
                     console.log(err);
                     reject(err);
                   } else {
-                    console.log('result', result);
                     resolve(result);
                   }
             })
         });
     }
 
-    all(sql:string, params=[]):Promise<any>{
+    all(sql:string, params:any[]=[]):Promise<any>{
         return new Promise((resolve, reject) => {
             this.db.all(sql, params, (err:Error, result:RunResult) => {
                 if (err) {
@@ -51,7 +49,6 @@ export default class AppDAO{
                     console.log(err);
                     reject(err);
                   } else {
-                    console.log('result', result);
                     resolve(result);
                   }
             })
