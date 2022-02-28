@@ -87,8 +87,8 @@ export default class CanvasResultController{
 
 
     private responseObj(status:number, data:any, message:string):ResponseObj{
-        let response:ResponseObj = {status};
-        if(data) response["data"] = data;
+        const response:ResponseObj = {status};
+        if(data) response.data = data;
         if(message) response.message = message;
         return response;
     }
